@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 50px); /* Adjust grid size dynamically */
+    gap: 5px;
+    justify-content: center;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.cell[data-color="red"] {
+    background-color: red;
+}
+
+.cell[data-color="blue"] {
+    background-color: blue;
+}
+
+.cell[data-color="green"] {
+    background-color: green;
+}
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color By Numbers</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        #grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 40px);
+            gap: 0;
+            margin: 20px;
+            border: 2px solid #333;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #999;
+            cursor: pointer;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #color-picker {
+            margin: 20px;
+        }
+        .color-button {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .color-button.selected {
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color By Numbers</h1>
+    <div id="color-picker"></div>
+    <div id="grid-container"></div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
+
