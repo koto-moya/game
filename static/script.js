@@ -1,6 +1,7 @@
 const ws = new WebSocket(`ws://${window.location.host}/ws`);
 const gridContainer = document.getElementById("grid-container");
 const colorPicker = document.getElementById("color-picker");
+const populateBtn = document.getElementById("populate-btn");
 
 // Define available colors
 const colors = ["red", "blue", "green"];
@@ -35,7 +36,6 @@ ws.onmessage = (event) => {
                 div.dataset.col = colIndex;
                 div.dataset.color = data.colors[cell];
                 div.style.backgroundColor = data.colors[cell];
-                div.textContent = "1";  // Add number 1 to each cell
                 gridContainer.appendChild(div);
             });
         });
@@ -64,6 +64,25 @@ gridContainer.addEventListener("click", (event) => {
                 color: selectedColor,
             })
         );
+    }
+});
+
+// Add populate button handler
+populateBtn.addEventListener("click", async () => {
+    try {
+        const response = await fetch("/process-image");
+        const data = await response.json();
+        
+        // Update grid numbers with matrix values
+        const cells = document.querySelectorAll(".cell");
+        cells.forEach(cell => {
+            const row = parseInt(cell.dataset.row);
+            const col = parseInt(cell.dataset.col);
+            cell.textContent = data.matrix[row][col];
+        });
+    } catch (error) {
+        console.error("Failed to populate grid:", error);
+        alert("Failed to populate grid");
     }
 });
 

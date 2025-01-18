@@ -55,12 +55,26 @@
         .color-button.selected {
             border: 3px solid black;
         }
+        .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+        }
+        #populate-btn {
+            padding: 10px 20px;
+            margin-top: 4px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1>Color By Numbers</h1>
     <div id="color-picker"></div>
-    <div id="grid-container"></div>
+    <div class="container">
+        <div id="grid-container"></div>
+        <button id="populate-btn">Populate</button>
+    </div>
     <script src="/static/script.js"></script>
 </body>
 </html>

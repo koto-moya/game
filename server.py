@@ -2,6 +2,8 @@ from fastapi import FastAPI, WebSocket
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import json
+from pix import pixelate  # Change this line to:
+# import pix  # And use pix.pixelate() in the function below
 
 app = FastAPI()
 
@@ -46,6 +48,11 @@ async def websocket_endpoint(websocket: WebSocket):
                     }))
     except:
         connections.remove(websocket)
+
+@app.get("/process-image")
+async def process_image():
+    matrix, color_map = pixelate("images/cube.png")  # Change to: pix.pixelate()
+    return {"matrix": matrix.tolist()}
 
 @app.get("/")
 async def root():
