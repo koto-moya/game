@@ -35,6 +35,7 @@ ws.onmessage = (event) => {
                 div.dataset.col = colIndex;
                 div.dataset.color = data.colors[cell];
                 div.style.backgroundColor = data.colors[cell];
+                div.textContent = "1";  // Add number 1 to each cell
                 gridContainer.appendChild(div);
             });
         });
