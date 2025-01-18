@@ -3,23 +3,7 @@ const gridContainer = document.getElementById("grid-container");
 const colorPicker = document.getElementById("color-picker");
 const populateBtn = document.getElementById("populate-btn");
 
-// Define available colors
-const colors = ["red", "blue", "green"];
-let selectedColor = "red";
-
-// Create color picker buttons
-colors.forEach(color => {
-    const button = document.createElement("button");
-    button.className = "color-button";
-    button.style.backgroundColor = color;
-    button.onclick = () => {
-        selectedColor = color;
-        document.querySelectorAll('.color-button').forEach(btn => 
-            btn.classList.remove('selected'));
-        button.classList.add('selected');
-    };
-    colorPicker.appendChild(button);
-});
+let selectedColor = null;
 
 // Initialize the grid
 ws.onmessage = (event) => {
@@ -52,7 +36,7 @@ ws.onmessage = (event) => {
 
 // Handle cell click
 gridContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("cell")) {
+    if (event.target.classList.contains("cell") && selectedColor) {
         const row = event.target.dataset.row;
         const col = event.target.dataset.col;
         // Update color immediately for responsive feel
@@ -72,6 +56,24 @@ populateBtn.addEventListener("click", async () => {
     try {
         const response = await fetch("/process-image");
         const data = await response.json();
+        
+        // Clear existing color picker
+        colorPicker.innerHTML = '';
+        
+        // Create new color buttons from color map
+        Object.entries(data.colors).forEach(([index, rgb]) => {
+            const button = document.createElement("button");
+            button.className = "color-button";
+            button.style.backgroundColor = `rgb(${rgb.join(',')})`;
+            button.textContent = index; // Show color index in button
+            button.onclick = () => {
+                selectedColor = `rgb(${rgb.join(',')})`;
+                document.querySelectorAll('.color-button').forEach(btn => 
+                    btn.classList.remove('selected'));
+                button.classList.add('selected');
+            };
+            colorPicker.appendChild(button);
+        });
         
         // Update grid numbers with matrix values
         const cells = document.querySelectorAll(".cell");
