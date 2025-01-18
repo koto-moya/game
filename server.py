@@ -11,7 +11,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # Game state
 GRID_SIZE = 64
 grid = [[0 for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
-colors = ["red", "blue", "green"]
+colors = ["grey", "red", "blue", "green"]  # Added grey as first color
 
 # WebSocket connections
 connections = []
