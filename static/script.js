@@ -5,6 +5,15 @@ const populateBtn = document.getElementById("populate-btn");
 
 let selectedColor = null;
 
+// Add these functions at the top level
+function showSpinner() {
+    document.getElementById('spinner').style.display = 'block';
+}
+
+function hideSpinner() {
+    document.getElementById('spinner').style.display = 'none';
+}
+
 // Initialize the grid
 ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
@@ -54,6 +63,7 @@ gridContainer.addEventListener("click", (event) => {
 // Add populate button handler
 populateBtn.addEventListener("click", async () => {
     try {
+        showSpinner();
         const response = await fetch("/process-image");
         if (!response.ok) {
             const error = await response.json();
@@ -89,6 +99,8 @@ populateBtn.addEventListener("click", async () => {
     } catch (error) {
         console.error("Failed to populate grid:", error);
         alert(error.message || "Failed to generate image. Check if GPU is available.");
+    } finally {
+        hideSpinner();
     }
 });
 
