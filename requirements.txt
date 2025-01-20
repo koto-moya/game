@@ -2,4 +2,5 @@ fastapi
 scikit-image
 opencv-python
 numpy
+uvicorn
 git+https://github.com/sedthh/pyxelate.git
