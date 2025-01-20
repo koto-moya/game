@@ -51,7 +51,7 @@ async def websocket_endpoint(websocket: WebSocket):
 
 @app.get("/process-image")
 async def process_image():
-    matrix, color_map = pixelate("images/cube.png")
+    matrix, color_map = pixelate("images/image.png")
     # Convert numpy arrays to lists for JSON serialization
     return {
         "matrix": matrix.tolist(),

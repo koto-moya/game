@@ -55,6 +55,10 @@ gridContainer.addEventListener("click", (event) => {
 populateBtn.addEventListener("click", async () => {
     try {
         const response = await fetch("/process-image");
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || "Failed to generate image");
+        }
         const data = await response.json();
         
         // Clear existing color picker
@@ -84,7 +88,7 @@ populateBtn.addEventListener("click", async () => {
         });
     } catch (error) {
         console.error("Failed to populate grid:", error);
-        alert("Failed to populate grid");
+        alert(error.message || "Failed to generate image. Check if GPU is available.");
     }
 });
 
