@@ -2,6 +2,7 @@ from fastapi import FastAPI, WebSocket
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import json
+import uvicorn
 from pix import pixelate  # Change this line to:
 # import pix  # And use pix.pixelate() in the function below
 
@@ -61,3 +62,6 @@ async def process_image():
 @app.get("/")
 async def root():
     return FileResponse("static/index.html")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
