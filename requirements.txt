@@ -1,6 +1,5 @@
 fastapi
 scikit-image
-pyxelate
 opencv-python
 numpy
 git+https://github.com/sedthh/pyxelate.git
