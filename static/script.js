@@ -1,7 +1,7 @@
 // Get the WebSocket protocol based on page protocol
 const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
 // Get port from environment or use default
-const port = process.env.PORT || 10000;
+const port = 8000;
 // Construct WebSocket URL
 const wsUrl = `${wsProtocol}//${window.location.hostname}:${port}/ws`;
 const ws = new WebSocket(wsUrl);
