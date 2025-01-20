@@ -1,4 +1,11 @@
-const ws = new WebSocket(`ws://${window.location.host}/ws`);
+// Get the WebSocket protocol based on page protocol
+const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+// Get port from environment or use default
+const port = process.env.PORT || 10000;
+// Construct WebSocket URL
+const wsUrl = `${wsProtocol}//${window.location.hostname}:${port}/ws`;
+const ws = new WebSocket(wsUrl);
+
 const gridContainer = document.getElementById("grid-container");
 const colorPicker = document.getElementById("color-picker");
 const populateBtn = document.getElementById("populate-btn");
