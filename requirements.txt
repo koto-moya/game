@@ -1,5 +1,4 @@
 fastapi
-json
 scikit-image
 pyxelate
 opencv-python
