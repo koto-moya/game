@@ -3,9 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import json
 import uvicorn
-from pix import pixelate  # Change this line to:
-# import pix  # And use pix.pixelate() in the function below
-
+from pix import pixelate  
 app = FastAPI()
 
 # Serve static files
