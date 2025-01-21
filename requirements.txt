@@ -1,5 +1,4 @@
 fastapi
-scikit-image
 opencv-python
 numpy
 websockets

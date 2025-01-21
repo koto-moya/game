@@ -1,9 +1,6 @@
-from skimage import io
 from pyxelate import Pyx
 import cv2
 import numpy as np
-import warnings
-warnings.filterwarnings("ignore")
 
 def pixelate(image_path):
     """Return (color_matrix, color_map) tuple from image."""
