@@ -9,6 +9,7 @@ def pixelate(image_path):
     # Pixelate to 64x64
     pyx = Pyx(factor=max(image.shape[0], image.shape[1])//32, palette=8)
     pyx.fit(image)
+    
     pix_image = cv2.resize(pyx.transform(image), (32, 32), interpolation=cv2.INTER_NEAREST)
     
     # Create color map
@@ -23,3 +24,7 @@ def pixelate(image_path):
             matrix[i, j] = reverse_map[tuple(pix_image[i, j])]
             
     return matrix, color_map
+
+
+if __name__ == "__main__":
+    pixelate("images/image.png")
