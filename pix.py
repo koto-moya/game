@@ -25,6 +25,3 @@ def pixelate(image_path):
             
     return matrix, color_map
 
-
-if __name__ == "__main__":
-    pixelate("images/image.png")
