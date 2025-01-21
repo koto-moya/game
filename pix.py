@@ -7,7 +7,7 @@ def pixelate(image_path):
     image = cv2.imread(image_path)
     
     # Pixelate to 64x64
-    pyx = Pyx(factor=max(image.shape[0], image.shape[1])//32, palette=5)
+    pyx = Pyx(factor=max(image.shape[0], image.shape[1])//32, palette=8)
     pyx.fit(image)
     pix_image = cv2.resize(pyx.transform(image), (32, 32), interpolation=cv2.INTER_NEAREST)
     
